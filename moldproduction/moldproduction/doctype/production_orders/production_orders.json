@@ -1,0 +1,148 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-08-01 11:06:35.717951",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series_section",
+  "naming_series",
+  "section_break_tpgg",
+  "date",
+  "column_break_wnlf",
+  "shift",
+  "column_break_mvtb",
+  "operator",
+  "column_break_raan",
+  "conveyer_line",
+  "section_break_yaor",
+  "production_details",
+  "section_break_rsjy",
+  "total_production_quantity",
+  "column_break_tpzp",
+  "total_completed_quantity",
+  "column_break_jbdy",
+  "total_remaining_quantity"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "series",
+   "options": "Production-"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "naming_series_section",
+   "fieldtype": "Section Break",
+   "label": "naming series"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "section_break_tpgg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "column_break_mvtb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "operator",
+   "fieldtype": "Link",
+   "label": "Operator",
+   "options": "Operator"
+  },
+  {
+   "fieldname": "column_break_wnlf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "conveyer_line",
+   "fieldtype": "Data",
+   "label": "Conveyer Line"
+  },
+  {
+   "fieldname": "column_break_raan",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_yaor",
+   "fieldtype": "Section Break",
+   "label": "Production Orders Details"
+  },
+  {
+   "fieldname": "section_break_rsjy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_tpzp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jbdy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "production_details",
+   "fieldtype": "Table",
+   "options": "Production Order Pattern Detail"
+  },
+  {
+   "fieldname": "total_production_quantity",
+   "fieldtype": "Float",
+   "label": "Total Production Quantity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_completed_quantity",
+   "fieldtype": "Float",
+   "label": "Completed Quantity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_remaining_quantity",
+   "fieldtype": "Float",
+   "label": "Total Remaining Quantity",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-01 11:25:55.346652",
+ "modified_by": "Administrator",
+ "module": "MoldProduction",
+ "name": "Production Orders",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
