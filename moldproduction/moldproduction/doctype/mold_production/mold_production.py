@@ -1,36 +1,39 @@
+# Copyright (c) 2025, shrey and contributors
+# For license information, please see license.txt
+
 import frappe
 from frappe.model.document import Document
 
+
 class MoldProduction(Document):
-    def on_submit(self):
-        self.update_production_order_quantities()
+	@frappe.whitelist()
+	def update_production_order_completed_quantity(production_order, pattern, completed_quantity):
+		po = frappe.get_doc("Production Orders", production_order)
+		  # Example of a test message
 
-    def update_production_order_quantities(self):
-        if not self.production_order:
-            return
+		# Convert completed_quantity to float
+		completed_quantity = float(completed_quantity)
 
-        # Get the linked Production Order
-        production_order = frappe.get_doc("Production Order", self.production_order)
+		for row in po.production_details:
+			if row.pattern == pattern:
+				row.completed_quantity = completed_quantity
+				row.remaining_quantity = row.production_quantity - completed_quantity
+				break
 
-        # Initialize completed quantity
-        total_completed_qty = 0
+		total_production_quantity = sum(row.production_quantity for row in po.production_details)
+		total_completed_quantity = sum(row.completed_quantity for row in po.production_details)
+		total_remaining_quantity = total_production_quantity - total_completed_quantity
 
-        # Fetch all submitted Mold Production entries linked to this Production Order
-        mold_productions = frappe.get_all(
-            "Mold Production",
-            filters={"production_order": self.production_order, "docstatus": 1},
-            fields=["name"]
-        )
+		po.total_production_quantity = total_production_quantity
+		po.total_completed_quantity = total_completed_quantity
+		po.total_remaining_quantity = total_remaining_quantity
 
-        # Sum up produced_qty from each mold production's child table
-        for mold in mold_productions:
-            mold_doc = frappe.get_doc("Mold Production", mold.name)
-            for item in mold_doc.child_table:  # <-- changed to child_table
-                total_completed_qty += item.produced_qty  # Make sure this field exists in the child table
+		po.save()
+		frappe.db.commit()
 
-        # Update completed and remaining quantities in Production Order
-        production_order.completedquantity = total_completed_qty
-        production_order.remainingquantity = production_order.totalquantity - total_completed_qty
+		return {
+			"total_production_quantity": total_production_quantity,
+			"total_completed_quantity": total_completed_quantity,
+			"total_remaining_quantity": total_remaining_quantity
+		}
 
-        production_order.save()
-        frappe.msgprint("✅ Production Order updated successfully.")

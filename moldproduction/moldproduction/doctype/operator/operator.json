@@ -13,20 +13,20 @@
   {
    "fieldname": "operatorname",
    "fieldtype": "Data",
-   "label": "operatorname",
+   "label": "Operator Name",
    "unique": 1
   },
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "series",
-   "options": "op-"
+   "options": "OP-"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-31 14:16:09.276900",
+ "modified": "2025-08-01 18:03:02.354164",
  "modified_by": "Administrator",
  "module": "MoldProduction",
  "name": "Operator",

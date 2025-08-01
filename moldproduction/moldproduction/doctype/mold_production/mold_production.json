@@ -2,38 +2,23 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2025-07-31 12:28:58.615597",
+ "creation": "2025-08-01 13:55:26.299617",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "naming_series_section",
   "naming_series",
-  "column_break_vxcp",
-  "section_break_hljv",
+  "section_break_wkaz",
   "production_order",
-  "column_break_bwef",
-  "section_break_dsvd",
-  "child_table"
+  "section_break_fwkj",
+  "production_details"
  ],
  "fields": [
   {
-   "fieldname": "production_order",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "production name",
-   "options": "Production Order"
-  },
-  {
-   "fieldname": "child_table",
-   "fieldtype": "Table",
-   "label": "add order",
-   "options": "moldTable"
-  },
-  {
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "label": "series",
-   "options": "Mold-"
+   "label": "Series",
+   "options": "MOULD-"
   },
   {
    "collapsible": 1,
@@ -42,26 +27,30 @@
    "label": "Naming Series"
   },
   {
-   "fieldname": "column_break_vxcp",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_hljv",
+   "fieldname": "section_break_wkaz",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "column_break_bwef",
-   "fieldtype": "Column Break"
+   "fieldname": "production_order",
+   "fieldtype": "Link",
+   "label": "Production Order",
+   "options": "Production Orders"
   },
   {
-   "fieldname": "section_break_dsvd",
+   "fieldname": "section_break_fwkj",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "production_details",
+   "fieldtype": "Table",
+   "label": "Production Details",
+   "options": "Mold Production Details"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-01 11:00:59.440948",
+ "modified": "2025-08-01 17:50:46.302156",
  "modified_by": "Administrator",
  "module": "MoldProduction",
  "name": "Mold Production",

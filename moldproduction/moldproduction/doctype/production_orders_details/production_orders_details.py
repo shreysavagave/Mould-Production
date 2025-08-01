@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class moldTable(Document):
+class ProductionOrdersDetails(Document):
 	pass

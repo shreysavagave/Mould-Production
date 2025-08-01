@@ -97,7 +97,7 @@
   {
    "fieldname": "production_details",
    "fieldtype": "Table",
-   "options": "Production Order Pattern Detail"
+   "options": "Production Orders Details"
   },
   {
    "fieldname": "total_production_quantity",
@@ -121,7 +121,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-01 11:25:55.346652",
+ "modified": "2025-08-01 17:52:51.137511",
  "modified_by": "Administrator",
  "module": "MoldProduction",
  "name": "Production Orders",

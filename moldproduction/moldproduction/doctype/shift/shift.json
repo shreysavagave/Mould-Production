@@ -13,19 +13,19 @@
   {
    "fieldname": "shiftname",
    "fieldtype": "Data",
-   "label": "shiftname"
+   "label": "Shift"
   },
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "label": "series",
-   "options": "Sh-"
+   "label": "Series",
+   "options": "SH-"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-31 14:02:18.659346",
+ "modified": "2025-08-01 17:53:55.591117",
  "modified_by": "Administrator",
  "module": "MoldProduction",
  "name": "Shift",
