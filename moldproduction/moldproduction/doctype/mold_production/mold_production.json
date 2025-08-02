@@ -8,17 +8,30 @@
  "field_order": [
   "naming_series_section",
   "naming_series",
-  "section_break_wkaz",
-  "production_order",
+  "section_break_yfcv",
+  "production_orders",
+  "section_break_tagi",
+  "date",
+  "column_break_rvgt",
+  "shift",
+  "column_break_tojj",
+  "operator",
+  "column_break_mazr",
+  "conveyer_line",
   "section_break_fwkj",
-  "production_details"
+  "completed_quantity",
+  "column_break_dgyj",
+  "remaining_quantity",
+  "section_break_ogyi",
+  "status",
+  "amended_from"
  ],
  "fields": [
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Series",
-   "options": "MOULD-"
+   "options": "MP-"
   },
   {
    "collapsible": 1,
@@ -27,30 +40,111 @@
    "label": "Naming Series"
   },
   {
-   "fieldname": "section_break_wkaz",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "production_order",
-   "fieldtype": "Link",
-   "label": "Production Order",
-   "options": "Production Orders"
-  },
-  {
    "fieldname": "section_break_fwkj",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "production_details",
-   "fieldtype": "Table",
-   "label": "Production Details",
-   "options": "Mold Production Details"
+   "fieldname": "section_break_ogyi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nCompleted",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Mold Production",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "section_break_yfcv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "production_orders",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Production Orders",
+   "options": "Production Orders",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_tagi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "production_orders.date",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_rvgt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "production_orders.shift",
+   "fieldname": "shift",
+   "fieldtype": "Data",
+   "label": "Shift",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_tojj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "production_orders.operator",
+   "fieldname": "operator",
+   "fieldtype": "Data",
+   "label": "Operator",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_mazr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "production_orders.conveyer_line",
+   "fieldname": "conveyer_line",
+   "fieldtype": "Data",
+   "label": "Conveyer Line",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "production_orders.remaining_quantity",
+   "fieldname": "remaining_quantity",
+   "fieldtype": "Data",
+   "label": "Remaining Quantity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_dgyj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "completed_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Completed Quantity",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2025-08-01 17:50:46.302156",
+ "modified": "2025-08-02 18:29:34.761433",
  "modified_by": "Administrator",
  "module": "MoldProduction",
  "name": "Mold Production",
@@ -70,8 +164,18 @@
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Red",
+   "title": "Draft"
+  },
+  {
+   "color": "Green",
+   "title": "Completed"
+  }
+ ]
 }

@@ -17,20 +17,21 @@
   "column_break_raan",
   "conveyer_line",
   "section_break_yaor",
-  "production_details",
-  "section_break_rsjy",
-  "total_production_quantity",
-  "column_break_tpzp",
-  "total_completed_quantity",
-  "column_break_jbdy",
-  "total_remaining_quantity"
+  "production_quantity",
+  "column_break_qgka",
+  "completed_quantity",
+  "column_break_iuvi",
+  "remaining_quantity",
+  "section_break_vgdz",
+  "status",
+  "amended_from"
  ],
  "fields": [
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "series",
-   "options": "Production-"
+   "options": "PO-"
   },
   {
    "collapsible": 1,
@@ -83,45 +84,62 @@
    "label": "Production Orders Details"
   },
   {
-   "fieldname": "section_break_rsjy",
+   "fieldname": "section_break_vgdz",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "column_break_tpzp",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_jbdy",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "production_details",
-   "fieldtype": "Table",
-   "options": "Production Orders Details"
-  },
-  {
-   "fieldname": "total_production_quantity",
-   "fieldtype": "Float",
-   "label": "Total Production Quantity",
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nIn Progress\nCompleted",
    "read_only": 1
   },
   {
-   "fieldname": "total_completed_quantity",
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "completed_quantity",
    "fieldtype": "Float",
    "label": "Completed Quantity",
    "read_only": 1
   },
   {
-   "fieldname": "total_remaining_quantity",
+   "fieldname": "column_break_qgka",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "remaining_quantity",
    "fieldtype": "Float",
-   "label": "Total Remaining Quantity",
+   "label": "Remaining Quantity ",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_iuvi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "production_quantity",
+   "fieldtype": "Float",
+   "label": "Production Quantity"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Production Orders",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2025-08-01 17:52:51.137511",
+ "modified": "2025-08-02 18:31:23.753230",
  "modified_by": "Administrator",
  "module": "MoldProduction",
  "name": "Production Orders",
@@ -144,5 +162,18 @@
  "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Red",
+   "title": "Draft"
+  },
+  {
+   "color": "Blue",
+   "title": "In Progress"
+  },
+  {
+   "color": "Green",
+   "title": "Completed"
+  }
+ ]
 }

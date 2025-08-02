@@ -1,39 +1,48 @@
-# Copyright (c) 2025, shrey and contributors
-# For license information, please see license.txt
-
 import frappe
 from frappe.model.document import Document
 
-
 class MoldProduction(Document):
-	@frappe.whitelist()
-	def update_production_order_completed_quantity(production_order, pattern, completed_quantity):
-		po = frappe.get_doc("Production Orders", production_order)
-		  # Example of a test message
 
-		# Convert completed_quantity to float
-		completed_quantity = float(completed_quantity)
+    def on_submit(self):
+        self.update_production_order_on_submit()
 
-		for row in po.production_details:
-			if row.pattern == pattern:
-				row.completed_quantity = completed_quantity
-				row.remaining_quantity = row.production_quantity - completed_quantity
-				break
+    def on_cancel(self):
+        self.revert_production_order_on_cancel()
 
-		total_production_quantity = sum(row.production_quantity for row in po.production_details)
-		total_completed_quantity = sum(row.completed_quantity for row in po.production_details)
-		total_remaining_quantity = total_production_quantity - total_completed_quantity
+    def update_production_order_on_submit(self):
+        if not self.production_orders:
+            return
 
-		po.total_production_quantity = total_production_quantity
-		po.total_completed_quantity = total_completed_quantity
-		po.total_remaining_quantity = total_remaining_quantity
+        po = frappe.get_doc("Production Orders", self.production_orders)
 
-		po.save()
-		frappe.db.commit()
+        # Update production values
+        po.completed_quantity += self.completed_quantity
+        po.remaining_quantity = po.production_quantity - po.completed_quantity
 
-		return {
-			"total_production_quantity": total_production_quantity,
-			"total_completed_quantity": total_completed_quantity,
-			"total_remaining_quantity": total_remaining_quantity
-		}
+        # Update status
+        if po.completed_quantity >= po.production_quantity:
+            po.status = "Completed"
+        else:
+            po.status = "In Progress"
 
+        po.save()
+        self.status = "Completed"
+		# self.docstatus = 2
+
+    def revert_production_order_on_cancel(self):
+        if not self.production_orders:
+            return
+
+        po = frappe.get_doc("Production Orders", self.production_orders)
+
+        # Reverse the quantities
+        po.completed_quantity -= self.completed_quantity
+        po.remaining_quantity += self.completed_quantity
+
+        # Recalculate status
+        if po.completed_quantity <= 0:
+            po.status = "Draft"
+        else:
+            po.status = "In Progress"
+
+        po.save()
