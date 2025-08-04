@@ -8,10 +8,12 @@
  "field_order": [
   "naming_series_section",
   "naming_series",
+  "column_break_gwmn",
+  "date",
   "section_break_yfcv",
   "production_orders",
   "section_break_tagi",
-  "date",
+  "pattern",
   "column_break_rvgt",
   "shift",
   "column_break_tojj",
@@ -138,13 +140,23 @@
    "in_list_view": 1,
    "label": "Completed Quantity",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_gwmn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "production_orders.pattern",
+   "fieldname": "pattern",
+   "fieldtype": "Data",
+   "label": "Pattern"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-02 18:29:34.761433",
+ "modified": "2025-08-04 09:47:08.974689",
  "modified_by": "Administrator",
  "module": "MoldProduction",
  "name": "Mold Production",

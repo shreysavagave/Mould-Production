@@ -8,8 +8,10 @@
  "field_order": [
   "naming_series_section",
   "naming_series",
-  "section_break_tpgg",
+  "column_break_rdmw",
   "date",
+  "section_break_tpgg",
+  "pattern",
   "column_break_wnlf",
   "shift",
   "column_break_mvtb",
@@ -37,7 +39,7 @@
    "collapsible": 1,
    "fieldname": "naming_series_section",
    "fieldtype": "Section Break",
-   "label": "naming series"
+   "label": "Naming Series"
   },
   {
    "default": "Today",
@@ -133,13 +135,25 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "column_break_rdmw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pattern",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pattern",
+   "options": "Pattern",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-02 18:31:23.753230",
+ "modified": "2025-08-04 10:45:28.898316",
  "modified_by": "Administrator",
  "module": "MoldProduction",
  "name": "Production Orders",
